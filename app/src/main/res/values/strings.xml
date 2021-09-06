@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TODO</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="forgot_pass">Forgot Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="todo_main">TO-DO</string>
+    <string name="slogan">Put all your to-do’s in one simple space</string>
+</resources>
