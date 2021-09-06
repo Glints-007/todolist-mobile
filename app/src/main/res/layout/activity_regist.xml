@@ -40,8 +40,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view">
-
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/login_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
