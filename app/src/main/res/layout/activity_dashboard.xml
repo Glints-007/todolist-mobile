@@ -64,16 +64,15 @@
         app:layout_constraintVertical_bias="0.276">
 
         <GridLayout
-            android:layout_width="250dp"
+            android:layout_width="246dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
             android:columnCount="1"
             android:columnOrderPreserved="false"
             android:rowCount="2">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/inputData"
+                android:id="@+id/createTodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -105,7 +104,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/list"
+                android:id="@+id/showTodo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_rowWeight="1"
@@ -136,6 +135,16 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </GridLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Sign Out"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:background="@drawable/round_border"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
