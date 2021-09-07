@@ -106,6 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/email"
+                    android:background="@drawable/inputtask_bg"
                     android:drawablePadding="6dp"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress" />
@@ -124,10 +125,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/pass"
+                    android:background="@drawable/inputtask_bg"
                     android:drawablePadding="6dp"
                     android:hint="@string/pass"
-                    android:inputType="textPassword"
-                    />
+                    android:inputType="textPassword" />
+
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.todo.user.RegistReq
+import com.example.todo.user.RegistResponse
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_regist.*
@@ -30,56 +32,49 @@ class RegistActivity : AppCompatActivity() {
         login_page = findViewById(R.id.login_page)
 
         login_page.setOnClickListener {
-            onBackPressed()
-        }
-
-        fun onBackPressed() {
             super.onBackPressed()
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
         }
 
         regist_btn.setOnClickListener {
-            fun onCLick(){
-                val registReq = RegistReq()
-                if (TextUtils.isEmpty(name_regist.text.toString()) or
-                    TextUtils.isEmpty(email_regist.text.toString()) or
-                    TextUtils.isEmpty(pass_regist.text.toString())){
-
+            val registReq = RegistReq()
+            if (TextUtils.isEmpty(name_regist.text.toString()) or
+                TextUtils.isEmpty(email_regist.text.toString()) or
+                TextUtils.isEmpty(pass_regist.text.toString())){
                     val message = "All inputs required..."
                     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
                 }
-                else{
-                registReq.name(name_regist.text.toString())
-                registReq.email(email_regist.text.toString())
-                registReq.password(pass_regist.text.toString())
+            else{
+                registReq.name = name_regist.text.toString().trim()
+                registReq.email = email_regist.text.toString().trim()
+                registReq.password = pass_regist.text.toString().trim()
 
                 registUser(registReq)
-                }
             }
         }
     }
 
     fun registUser(registReq: RegistReq){
         val registResponseCall: Call<RegistResponse> = APIClient.service.registUser(registReq)
-        registResponseCall.enqueue(Callback<RegistResponse>() {
-            fun onResponse(call: Call<RegistResponse>, response: Response<RegistResponse>){
+        registResponseCall.enqueue(object: Callback<RegistResponse> {
+            override fun onResponse(call: Call<RegistResponse>, response: Response<RegistResponse>){
                 if (response.isSuccessful){
                     val message = "Your account is successfully registered..."
-                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@RegistActivity, message, Toast.LENGTH_LONG).show()
 
-                    val intent =Intent(this, MainActivity::class.java)
+                    val intent =Intent(this@RegistActivity, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
                 else{
                     val message = "An error occurred\n Please try again later..."
-                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@RegistActivity, message, Toast.LENGTH_LONG).show()
                 }
             }
 
-            fun onFailure(call: Call<RegistResponse>, t: Throwable){
+            override fun onFailure(call: Call<RegistResponse>, t: Throwable){
                 val message = t.localizedMessage
-                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@RegistActivity, message, Toast.LENGTH_LONG).show()
             }
         })
     }

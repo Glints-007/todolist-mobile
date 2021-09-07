@@ -7,19 +7,32 @@
     tools:context=".RegistActivity">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textView2"
+        android:id="@+id/materialTextView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="serif-monospace"
         android:text="@string/todo_main"
         android:textColor="@color/primaryColor"
-        android:textSize="55sp"
+        android:textSize="58sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/slogan"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialTextView5" />
+
 
     <View
         android:id="@+id/view"
@@ -28,7 +41,8 @@
         android:background="@drawable/regist_login_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676" />
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -40,7 +54,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view">
-        <Button
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +63,7 @@
             android:background="@drawable/round_border"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="Login"
+            android:text="@string/sign_in"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
@@ -58,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:text="REGISTER"
+            android:text="@string/sign_up"
             android:textColor="@color/primaryColor"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -73,8 +88,11 @@
         app:cardCornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.59">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,7 +156,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primaryColor"
-        android:text="Register"
+        android:text="@string/sign_up"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
