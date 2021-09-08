@@ -19,22 +19,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/titleTV"
+            android:id="@+id/titleListTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Title"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/timelineTV"
+            android:id="@+id/descTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:text="Timeline"
+            android:text="Desc"
             android:textSize="24sp"
             android:textColor="@color/black"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -54,6 +55,13 @@
             android:layout_height="30dp"
             android:background="@drawable/edit"
             android:backgroundTint="@color/primaryColor"
+            android:foreground="?attr/selectableItemBackground"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/delete"
+            android:backgroundTint="@color/primaryDark"
             android:foreground="?attr/selectableItemBackground"/>
     </LinearLayout>
 

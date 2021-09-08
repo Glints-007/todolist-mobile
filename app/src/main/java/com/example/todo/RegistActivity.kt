@@ -3,6 +3,7 @@ package com.example.todo
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.user.RegistReq
@@ -38,12 +39,18 @@ class RegistActivity : AppCompatActivity() {
 
         regist_btn.setOnClickListener {
             val registReq = RegistReq()
-            if (TextUtils.isEmpty(name_regist.text.toString()) or
-                TextUtils.isEmpty(email_regist.text.toString()) or
-                TextUtils.isEmpty(pass_regist.text.toString())){
-                    val message = "All inputs required..."
-                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-                }
+            if (TextUtils.isEmpty(email_regist.text.toString()) or !Patterns.EMAIL_ADDRESS.matcher(email_regist.text.toString()).matches()){
+                email_regist.requestFocus()
+                email_regist.setError("Please enter your email correctly...")
+            }
+            if (TextUtils.isEmpty(pass_regist.text.toString())){
+                pass_regist.requestFocus()
+                pass_regist.setError("Please enter your password...")
+            }
+            if ( pass_regist.text.toString().length<8){
+                pass_regist.requestFocus()
+                pass_regist.setError("Password contained 8 characters or more..")
+            }
             else{
                 registReq.name = name_regist.text.toString().trim()
                 registReq.email = email_regist.text.toString().trim()
@@ -55,7 +62,7 @@ class RegistActivity : AppCompatActivity() {
     }
 
     fun registUser(registReq: RegistReq){
-        val registResponseCall: Call<RegistResponse> = APIClient.service.registUser(registReq)
+        val registResponseCall: Call<RegistResponse> = APIClient.user.registUser(registReq)
         registResponseCall.enqueue(object: Callback<RegistResponse> {
             override fun onResponse(call: Call<RegistResponse>, response: Response<RegistResponse>){
                 if (response.isSuccessful){
@@ -64,6 +71,7 @@ class RegistActivity : AppCompatActivity() {
 
                     val intent =Intent(this@RegistActivity, MainActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
                     finish()
                 }
                 else{

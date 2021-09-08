@@ -15,8 +15,5 @@ interface UserService {
         @Body registReq: RegistReq
     ): Call<RegistResponse>
 
-//    @GET("/api/v1/todos")
-//    fun indexTodos(
-//
-//    )
+
 }

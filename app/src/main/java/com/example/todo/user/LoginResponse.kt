@@ -11,6 +11,10 @@ class LoginResponse : Serializable {
 
     val content: User? = null
     class User{
+        @SerializedName("status_code")
+        @Expose
+        var status_code: String? = null
+
         @SerializedName("access_token")
         @Expose
         var access_token: String? = null
