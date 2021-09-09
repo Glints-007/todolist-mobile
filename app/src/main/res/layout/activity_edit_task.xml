@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/inputtask_bg"
-                android:hint="What you do?"
+                android:hint="Due date?"
                 android:textColorHint="@color/primaryLight"
                 android:textColor="@color/primaryDark"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -128,10 +128,11 @@
         android:layout_marginTop="70dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="@color/primaryColor"
+        app:cornerRadius="16dp"
         android:text="Update"
         android:textStyle="bold"
-        android:textSize="20sp"
-        android:background="@drawable/round_border"/>
+        android:textSize="20sp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/delTask_btn"
@@ -140,10 +141,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="@color/material_on_background_disabled"
+        app:cornerRadius="16dp"
         android:text="Delete"
         android:textStyle="bold"
-        android:textSize="20sp"
-        android:background="@drawable/round_border"/>
-
-
+        android:textSize="20sp"/>
 </LinearLayout>

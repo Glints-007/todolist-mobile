@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todo.user.LoginReq
 import com.example.todo.user.LoginResponse
+import com.example.todo.user.UserPrefManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var login_btn: MaterialButton
     private lateinit var regist_page: MaterialButton
     private lateinit var forgot_pass: TextView
+    private lateinit var userPrefManager: UserPrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +41,13 @@ class MainActivity : AppCompatActivity() {
 
         login_btn.setOnClickListener {
             val loginReq = LoginReq()
-            if (TextUtils.isEmpty(user_login.text.toString()) or
-                TextUtils.isEmpty(pass_login.text.toString())){
-                    val message = "All inputs required..."
-                    Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            if (TextUtils.isEmpty(user_login.text.toString())){
+                user_login.requestFocus()
+                user_login.setError("Please enter your email...")
+            }
+            if (TextUtils.isEmpty(pass_login.text.toString())){
+                pass_login.requestFocus()
+                pass_login.setError("Please enter your password...")
             }
             else{
                 loginReq.email = user_login.text.toString().trim()
@@ -50,19 +55,29 @@ class MainActivity : AppCompatActivity() {
                 loginUser(loginReq)
             }
         }
+
+        userPrefManager = UserPrefManager(applicationContext)
+
+        forgot_pass.setOnClickListener {
+            val intent = Intent(this, ForgotActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+        }
     }
 
     fun loginUser(loginReq: LoginReq){
-        val loginResponseCall: Call<LoginResponse> = APIClient.service.loginUser(loginReq)
+        val loginResponseCall: Call<LoginResponse> = APIClient.user.loginUser(loginReq)
         loginResponseCall.enqueue(object: Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful){
                     val loginResponse = response.body()
-
-                    val intent = Intent(this@MainActivity, DashboardActivity::class.java)
+                    if (loginResponse!!.content!!.status_code.equals("200")){
+                        userPrefManager.saveUser(LoginResponse.User())
+                        val intent = Intent(this@MainActivity, DashboardActivity::class.java)
 //                    startActivity(intent.putExtra("data", loginResponse))
-                    startActivity(intent)
-                    finish()
+                        startActivity(intent)
+                        finish()
+                    }
                 }
                 else{
                     val message = "Unable to login with the provided credential..."
@@ -77,4 +92,13 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+//    override fun onStart() {
+//        super.onStart()
+//
+//        if (userPrefManager.isLogin){
+//            val intent = Intent(this@MainActivity, DashboardActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+//    }
 }

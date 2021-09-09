@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginRight="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/acc" />
@@ -43,11 +43,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="Welcome to your\nTO-DO APP"
+        android:layout_marginLeft="6dp"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="#EEEEE4"
+        android:textColor="@color/primaryLight"
         app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

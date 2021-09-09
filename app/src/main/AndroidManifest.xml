@@ -13,6 +13,18 @@
         android:theme="@style/Theme.TODO"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".EditList"
+            android:exported="true" />
+        <activity
+            android:name=".CreateList"
+            android:exported="true" />
+        <activity
+            android:name=".ListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ForgotActivity"
+            android:exported="true" />
+        <activity
             android:name=".EditTask"
             android:exported="true" />
         <activity

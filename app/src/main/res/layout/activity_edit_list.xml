@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CreateTodo">
+    tools:context=".EditList">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="16dp"
             android:fontFamily="serif-monospace"
-            android:text="Create\nNew Task"
+            android:text="Edit\nThe Task"
             android:textAlignment="textEnd"
             android:textColor="@color/primaryLight"
             android:textSize="40sp"
@@ -88,11 +88,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/titleTodo"
+                android:id="@+id/titleList_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/inputtask_bg"
-                android:hint="What you do?"
+                android:hint="What you gonna do?"
                 android:textColorHint="@color/primaryLight"
                 android:textColor="@color/primaryDark"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Timeline"
+            android:text="Description"
             android:textSize="20sp"
             android:textColor="@color/primaryDark"/>
 
@@ -111,26 +111,59 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp" >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/dateTodo"
+                android:id="@+id/descList_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/inputtask_bg"
-                android:hint="Due date?"
+                android:hint="Content?"
+                android:maxLength="30"
                 android:textColorHint="@color/primaryLight"
                 android:textColor="@color/primaryDark"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Upload Image"
+            android:textSize="20sp"
+            android:textColor="@color/primaryDark"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/image_btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Choose File"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/primaryBlue"/>
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/createTask_btn"
+        android:id="@+id/updateList_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:text="Create"
+        android:backgroundTint="@color/primaryColor"
+        app:cornerRadius="16dp"
+        android:text="Update"
         android:textStyle="bold"
-        android:textSize="20sp"
-        android:background="@drawable/round_border"/>
+        android:textSize="20sp"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delList_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@color/material_on_background_disabled"
+        app:cornerRadius="16dp"
+        android:text="Delete"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
 </LinearLayout>
