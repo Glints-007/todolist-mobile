@@ -3,6 +3,7 @@ package com.example.todo
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -66,15 +67,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun loginUser(loginReq: LoginReq){
-        val loginResponseCall: Call<LoginResponse> = APIClient.user.loginUser(loginReq)
+        val loginResponseCall: Call<LoginResponse> = APIClient.user().loginUser(loginReq)
         loginResponseCall.enqueue(object: Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful){
                     val loginResponse = response.body()
-                    if (loginResponse!!.content!!.status_code.equals("200")){
+                    if (loginResponse!!.content!!.status_code!!.equals("200")){
                         userPrefManager.saveUser(LoginResponse.User())
                         val intent = Intent(this@MainActivity, DashboardActivity::class.java)
 //                    startActivity(intent.putExtra("data", loginResponse))
+                        Log.d("Debug", "ISI " + APIClient.gson.toJson(loginResponse))
                         startActivity(intent)
                         finish()
                     }

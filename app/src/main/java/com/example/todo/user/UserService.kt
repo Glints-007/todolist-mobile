@@ -15,5 +15,8 @@ interface UserService {
         @Body registReq: RegistReq
     ): Call<RegistResponse>
 
+//    @FormUrlEncoded
+//    @POST("/api/v1/logout")
+
 
 }

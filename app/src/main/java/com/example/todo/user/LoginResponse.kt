@@ -5,15 +5,17 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 class LoginResponse : Serializable {
+    @SerializedName("errors")
+    @Expose
+    val errors: String? = null
 
     @SerializedName("content")
     @Expose
-
     val content: User? = null
     class User{
         @SerializedName("status_code")
         @Expose
-        var status_code: String? = null
+        var status_code: Int? = null
 
         @SerializedName("access_token")
         @Expose

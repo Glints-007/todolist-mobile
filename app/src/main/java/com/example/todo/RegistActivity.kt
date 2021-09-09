@@ -62,7 +62,7 @@ class RegistActivity : AppCompatActivity() {
     }
 
     fun registUser(registReq: RegistReq){
-        val registResponseCall: Call<RegistResponse> = APIClient.user.registUser(registReq)
+        val registResponseCall: Call<RegistResponse> = APIClient.user().registUser(registReq)
         registResponseCall.enqueue(object: Callback<RegistResponse> {
             override fun onResponse(call: Call<RegistResponse>, response: Response<RegistResponse>){
                 if (response.isSuccessful){
