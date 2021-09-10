@@ -8,7 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todo.APIClient.gson
+import com.example.todo.api.APIClient
+import com.example.todo.api.APIClient.gson
 import com.example.todo.task.CreateTaskReq
 import com.example.todo.task.CreateTaskResp
 import com.google.android.material.button.MaterialButton

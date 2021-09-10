@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.todo.task.ShowTaskResp
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
@@ -18,7 +19,7 @@ class EditTask : AppCompatActivity(), View.OnClickListener {
     private lateinit var updateList: MaterialButton
     private lateinit var delList: MaterialButton
     private val calendar = Calendar.getInstance()
-//    private val list: ShowTaskResp()
+    lateinit var list: ShowTaskResp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,4 +65,22 @@ class EditTask : AppCompatActivity(), View.OnClickListener {
         dateEdit.setText(sdf.format(calendar.time))
     }
 
+//    fun getTaskToEdit(){
+//        APIClient.task.getTask(ShowTaskResp()).enqueue(object: Callback<ShowTaskResp> {
+//            override fun onResponse(call: Call<ShowTaskResp>, response: Response<ShowTaskResp>) {
+//                if (response.isSuccessful){
+//                    val
+//                }
+//                else{
+//                    val message = "An error occurred\nPlease try again later..."
+//                    Toast.makeText(this@EditTask, message, Toast.LENGTH_LONG).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<ShowTaskResp>, t: Throwable) {
+//                val message = t.localizedMessage
+//                Toast.makeText(this@EditTask, message, Toast.LENGTH_LONG).show()
+//            }
+//        })
+//    }
 }

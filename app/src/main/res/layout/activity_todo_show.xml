@@ -79,6 +79,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRV"
+        tools:listitem="@layout/activity_todo_item"
         android:layout_marginTop="-65dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"

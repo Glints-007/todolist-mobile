@@ -29,11 +29,11 @@ class DashboardActivity : AppCompatActivity() {
 
         //val token = userPrefManager.token
 
+        val token = intent.getStringExtra("access_token")
+//        userPrefManager.saveUser(LoginResponse.User())
+        Log.e("TAG", "====>"+ token)
         if (intent.extras != null){
-            loginResponse = intent.getSerializableExtra("content") as LoginResponse
-            userPrefManager.saveUser(LoginResponse.User())
-            userPrefManager.token
-            Log.e("TAG", "====>"+ loginResponse.content)
+//            loginResponse = intent.getSerializableExtra("access_token") as LoginResponse
         }
 
         createNewTask.setOnClickListener {
@@ -56,7 +56,7 @@ class DashboardActivity : AppCompatActivity() {
 
         val userPrefManager = UserPrefManager(applicationContext)
         logout.setOnClickListener {
-            logoutUser()
+//            logoutUser()
 
             val intent = Intent(this@DashboardActivity, MainActivity::class.java)
             startActivity(intent)

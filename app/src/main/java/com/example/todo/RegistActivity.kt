@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.todo.api.APIClient
 import com.example.todo.user.RegistReq
 import com.example.todo.user.RegistResponse
 import com.google.android.material.button.MaterialButton
@@ -62,7 +63,7 @@ class RegistActivity : AppCompatActivity() {
     }
 
     fun registUser(registReq: RegistReq){
-        val registResponseCall: Call<RegistResponse> = APIClient.user().registUser(registReq)
+        val registResponseCall: Call<RegistResponse> = APIClient.user.registUser(registReq)
         registResponseCall.enqueue(object: Callback<RegistResponse> {
             override fun onResponse(call: Call<RegistResponse>, response: Response<RegistResponse>){
                 if (response.isSuccessful){
