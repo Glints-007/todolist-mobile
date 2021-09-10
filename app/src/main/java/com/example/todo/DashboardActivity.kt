@@ -5,14 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todo.task.IndexTodo
 import com.example.todo.user.LoginResponse
 import com.example.todo.user.UserPrefManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var createNewTask: MaterialCardView
@@ -24,15 +20,19 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        val accessToken = LoginResponse.User(access_token)
         setContentView(R.layout.activity_dashboard)
 
         createNewTask = findViewById(R.id.createTodo)
         showTasks = findViewById(R.id.showTodo)
         logout = findViewById(R.id.logout_btn)
 
+        //val token = userPrefManager.token
+
         if (intent.extras != null){
             loginResponse = intent.getSerializableExtra("content") as LoginResponse
             userPrefManager.saveUser(LoginResponse.User())
+            userPrefManager.token
             Log.e("TAG", "====>"+ loginResponse.content)
         }
 
@@ -56,38 +56,15 @@ class DashboardActivity : AppCompatActivity() {
 
         val userPrefManager = UserPrefManager(applicationContext)
         logout.setOnClickListener {
-            //
+            logoutUser()
 
             val intent = Intent(this@DashboardActivity, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
-
-
-        getIndexTodo()
     }
 
-    fun getIndexTodo(){
-        APIClient.task.getIndex().enqueue(object: Callback<IndexTodo>{
-            override fun onResponse(call: Call<IndexTodo>, response: Response<IndexTodo>) {
-                val index = response.body()
-                index
-                for (i in index!!.response!!){
-                    if (i != null) {
-                        Log.e("Index: ", i.id.toString())
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<IndexTodo>, t: Throwable) {
-                val message = t.localizedMessage
-                Toast.makeText(this@DashboardActivity, message, Toast.LENGTH_LONG).show()
-            }
-
-        })
-    }
-
-    fun logout(){
+    fun logoutUser(){
         userPrefManager.logout()
         val intent =Intent(this, MainActivity::class.java)
         startActivity(intent)

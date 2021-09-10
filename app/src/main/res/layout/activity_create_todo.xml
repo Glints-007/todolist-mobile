@@ -112,10 +112,15 @@
             android:layout_margin="10dp" >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/dateTodo"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/inputtask_bg"
-                android:hint="Due date?"
+                android:hint="DD/MM/YYYY"
+                android:inputType="date"
                 android:textColorHint="@color/primaryLight"
                 android:textColor="@color/primaryDark"/>
         </com.google.android.material.textfield.TextInputLayout>

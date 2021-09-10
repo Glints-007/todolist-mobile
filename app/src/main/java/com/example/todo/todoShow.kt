@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todo.task.ShowTaskResp
-import com.example.todo.task.TaskAdapter
+import com.example.todo.task.Adapter
+import com.example.todo.task.IndexTodo
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,7 +16,6 @@ import retrofit2.Response
 class todoShow : AppCompatActivity(){
     private lateinit var back_efab: ExtendedFloatingActionButton
     private lateinit var todoRV: RecyclerView
-    private val list = ArrayList<ShowTaskResp>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,20 +32,16 @@ class todoShow : AppCompatActivity(){
 
         todoRV .setHasFixedSize(true)
         todoRV.layoutManager = LinearLayoutManager(this)
-        getData()
+        getIndexTodo()
     }
 
-    fun getData() {
-        APIClient.task.getTask().enqueue(object: Callback<ArrayList<ShowTaskResp>> {
-            override fun onResponse(call: Call<ArrayList<ShowTaskResp>>, response: Response<ArrayList<ShowTaskResp>>
-            ) {
+    fun getIndexTodo(){
+        APIClient.task.getIndex().enqueue(object: Callback<List<IndexTodo>>{
+            override fun onResponse(call: Call<List<IndexTodo>>, response: Response<List<IndexTodo>>) {
                 if (response.isSuccessful){
-                    val showTask = response.body()
-                    for (st in showTask!!){
-                        response.body()?.let { list.addAll(it)}
-                        val adapter = TaskAdapter(list)
-                        todoRV.adapter = adapter
-                    }
+                    val index: List<IndexTodo>? = response.body()
+                    val adapter = Adapter(this@todoShow, index!!)
+                    todoRV.adapter = adapter
                 }
                 else{
                     val message = "An error occurred\nPlease try again later..."
@@ -54,7 +49,7 @@ class todoShow : AppCompatActivity(){
                 }
             }
 
-            override fun onFailure(call: Call<ArrayList<ShowTaskResp>>, t: Throwable) {
+            override fun onFailure(call: Call<List<IndexTodo>>, t: Throwable) {
                 val message = t.localizedMessage
                 Toast.makeText(this@todoShow, message, Toast.LENGTH_LONG).show()
             }
