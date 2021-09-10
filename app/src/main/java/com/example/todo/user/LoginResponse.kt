@@ -1,10 +1,11 @@
 package com.example.todo.user
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
+import kotlinx.android.parcel.Parcelize
 
-class LoginResponse : Serializable {
+class LoginResponse {
     @SerializedName("errors")
     @Expose
     val errors: String? = null
@@ -12,17 +13,18 @@ class LoginResponse : Serializable {
     @SerializedName("content")
     @Expose
     val content: User? = null
-    class User{
+    @Parcelize
+    data class User(
         @SerializedName("status_code")
         @Expose
-        var status_code: Int? = null
+        var status_code: Int? = null,
 
         @SerializedName("access_token")
         @Expose
-        var access_token: String? = null
+        var access_token: String? = null,
 
         @SerializedName("token_type")
         @Expose
         var token_type: String? = null
-    }
+    ): Parcelable
 }

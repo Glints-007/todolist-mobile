@@ -1,21 +1,33 @@
 package com.example.todo.list
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class IndexList : ArrayList<IndexListItem>()
-
-data class IndexListItem(
+class IndexList {
     @SerializedName("content")
-    val content: String,
+    @Expose
+    val content: String? = null
+
     @SerializedName("created_at")
-    val createdAt: String,
+    @Expose
+    val createdAt: String? = null
+
     @SerializedName("id")
-    val id: Int,
+    @Expose
+    val id: Int? = null
+
     @SerializedName("image")
-    val image: String,
+    @Expose
+    val image: String? = null
+
     @SerializedName("name")
-    val name: String,
+    @Expose
+    val name: String? = null
+
     @SerializedName("todoId")
-    val todoId: Int,
+    @Expose
+    val todoId: Int? = null
+
     @SerializedName("updated_at")
-    val updatedAt: String
-)
+    @Expose
+    val updatedAt: String? = null
+}

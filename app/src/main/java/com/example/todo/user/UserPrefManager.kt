@@ -12,7 +12,7 @@ class UserPrefManager(context: Context) {
 
     fun saveUser(userLogin: LoginResponse.User){
         editor = sharedPref.edit()
-        editor.putString("status_code", userLogin.status_code!!.toInt().toString())
+        userLogin.status_code?.let { editor.putInt("status_code", it) }
         editor.putString("access_token", userLogin.access_token)
         editor.putString("token_type", userLogin.token_type)
         editor.putBoolean("logged", true)
@@ -25,7 +25,7 @@ class UserPrefManager(context: Context) {
 
     var token
         get() = sharedPref.getString("access_token", null)
-        set(value) = sharedPref.edit().putString("access_token", value).apply()
+        set(access_token) = sharedPref.edit().putString("access_token", access_token).apply()
 
 
     var getEmail

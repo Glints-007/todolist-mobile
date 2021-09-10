@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todo.api.APIClient
 import com.example.todo.task.Adapter
 import com.example.todo.task.IndexTodo
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -30,6 +31,7 @@ class todoShow : AppCompatActivity(){
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
         }
 
+        //Recycle View
         todoRV .setHasFixedSize(true)
         todoRV.layoutManager = LinearLayoutManager(this)
         getIndexTodo()

@@ -1,11 +1,11 @@
-package com.example.todo.task
+package com.example.todo.api
 
+import com.example.todo.task.*
 import retrofit2.Call
 import retrofit2.http.*
 
 interface TaskService {
     @GET("/api/v1/todos")
-//    fun getIndex(): Call<ArrayList<ArrayList<IndexTodo>>>
     fun getIndex(): Call<List<IndexTodo>>
 
     @POST("/api/v1/todos")
@@ -15,7 +15,9 @@ interface TaskService {
 
     @FormUrlEncoded
     @GET("/api/v1/todos/{todoId}")
-    fun getTask(): Call<ShowTaskResp>
+    fun getTask(
+        @Path("userId") userId: Int
+    ): Call<ShowTaskResp>
 
     @FormUrlEncoded
     @PUT("/api/v1/todos/{todoId}")
@@ -26,5 +28,5 @@ interface TaskService {
     ): Call<EditTaskResp>
 
     @DELETE("/api/v1/todos/{todoId}")
-    fun delTask(@Path("id") id: Int): Call<DelTaskResp>
+    fun delTask(@Path("userId") userId: Int): Call<DelTaskResp>
 }

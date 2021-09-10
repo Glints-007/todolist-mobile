@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:clickable="true"
-    android:foreground="?attr/selectableItemBackground"
+    android:layout_height="wrap_content"
     android:backgroundTint="@color/primaryLight"
-    android:background="@drawable/round_border">
+    android:background="@drawable/round_border"
+    android:layout_marginBottom="16dp">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="350dp"
+        android:id="@+id/todoItem"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="6dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="Title"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textColor="@color/black"/>
 
         <TextView
@@ -42,9 +44,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
+        android:layout_marginRight="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toEndOf="@+id/todoItem"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.509">
 
